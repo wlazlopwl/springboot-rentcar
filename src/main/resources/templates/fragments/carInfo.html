@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+    <title>Title</title>
+
+
+
+</head>
+<body>
+
+<div th:fragment="carInfo">
+    <div class="card">
+
+
+        <ul class="nav nav-pills pt-3">
+            <li class="nav-item">
+
+                <a class="nav-link active" data-toggle="pill" href="#info">Information</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#extras">Extras</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#price">Price</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content pt-3">
+            <div class="tab-pane container active " id="info">
+                <div >
+                    <ul>
+                        <li> <p th:text="${car.engine.type}" ></p></li>
+                        <li> <p th:text="${car.rentPrice}" ></p></li>
+                        <li> <p th:text="${car.doorsNumber}" ></p></li>
+                        <li> <p th:text="${car.productionYear}" ></p></li>
+                        <li> <p th:text="${car.burningFuel}" ></p></li>
+                    </ul>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Proin ultrices risus et bibendum molestie. Fusce mauris
+                        diam, sodales at orci a, rhoncus ultricies odio. Vestibulum
+                        in sem fermentum ipsum imperdiet commodo ut nec turpis. Donec
+                        ante erat, ullamcorper at est nec, eleifend condimentum nibh.
+                        Suspendisse ut iaculis nulla. Nam mattis arcu nibh, in eleifend ligula blandit
+                        ac. Cras in massa a quam gravida venenatis sit amet at massa.
+                    </p>
+                </div>
+            </div>
+            <div class="tab-pane container fade" id="extras">
+
+                 <ul th:each="extras : ${car.car_extras}">
+					<li th:text="${extras.name}"/>
+                 </ul>
+            </div>
+            <div class="tab-pane container fade" id="price">...</div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</body>
+</html>

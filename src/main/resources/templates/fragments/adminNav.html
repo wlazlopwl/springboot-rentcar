@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <title>Title</title>
+</head>
+<body >
+<ul th:fragment="adminNav" class="navbar-nav flex-column mt-4">
+    <li class="nav-item">
+        <a href="/admin" class="nav-link"> Dashboard
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="/admin/car" class="nav-link"> Cars
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="/admin/users" class="nav-link"> Clients
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="#" class="nav-link"> Rezerwacje
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="/admin/extras" class="nav-link"> Main settings
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="/" class="nav-link"> Back to main
+        </a>
+    </li>
+</ul>
+</body>
+</html>

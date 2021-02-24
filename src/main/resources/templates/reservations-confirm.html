@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <title>Title</title>
+
+
+</head>
+<body>
+<div class="content container">
+    <div th:insert="fragments/header:: header"></div>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <div>
+                <img class="img-fluid" style="max-width: 300px" th:src="@{/images/{image}(image=${car.imgurl})}"/>
+            </div>
+            <div class="main_detail_h2_list">
+                <h3 class="main_detail_simple_h2" th:text="${car.brand} +' ' + ${car.model}+' | '"></h3>
+                <h3 class="main_detail_simple_h2" th:text="${car.engine.type}"></h3>
+
+            </div>
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h6>From: </h6>
+                    <p th:text="${pickupDate} + ' '+ ${pickupHour}"></p>
+                    <h6>To: </h6>
+                    <p th:text="${returnDate} + ' '+ ${returnHour}"></p>
+                    <br>
+                    <h6>Selected extras:</h6>
+                    <p th:each="extras:  ${selectedExtras}">
+                        <span th:text="${extras.name}"></span>
+                    </p>
+                    <br>
+                    <h6>Price summary:</h6>
+                    <p th:text="${summaryPrice} + ' PLN'"></p>
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="col-sm-9">
+            <form action="/newBooking" method="post">
+                <div class="row">
+
+                    <div class=" col-sm-8">
+
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="name" placeholder="First Name" th:value="${user.name}"
+                                       type="text">
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="surname" placeholder="Last Name" th:value="${user.surname}"
+                                       type="text">
+                            </label>
+                        </div>
+                    </div>
+                    <div class=" col-sm-8">
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="email" placeholder="Email" readonly th:value="${user.email}"
+                                       type="text">
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="phone" placeholder="Phone number" th:value="${user.phone}"
+                                       type="text">
+                            </label>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <button class="btn btn-secondary">Back</button>
+                    <button class="btn btn-success" type="submit">Confirm</button>
+                </div>
+            </form>
+
+
+        </div>
+
+
+    </div>
+    <script>
+        $('.datepicker').datepicker();
+    </script>
+
+
+</div>
+</body>
+
+
+</html>

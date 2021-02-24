@@ -1,0 +1,14 @@
+package com.appdevpwl.rentCar.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class ContactController {
+
+    @RequestMapping("/contact")
+    public String showContactPage() {
+        return "contact";
+
+    }
+}

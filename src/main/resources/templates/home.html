@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <title>Title</title>
+</head>
+<body>
+<div class=" container">
+    <div th:insert="fragments/header:: header"></div>
+
+    <div class="jumbotron">
+        <h1>Welcome in car world!</h1>
+        <p>Praesent consectetur, quam a sodales convallis, erat ex commodo elit, in iaculis nisi nisl at velit. </p>
+    </div>
+
+    <div>
+        <ul class="homeCarlist">
+            <li class="card pt-2 mb-3" th:each="car: ${carList}">
+                <div class="row">
+
+                    <div class="col-sm-4">
+                        <a th:href="@{/home/{id}(id=${car.id})}">
+                            <img class="img-fluid" style=" height: auto; width: auto"
+                                 th:src="@{/images/{image}(image=${car.imgurl})}"/>
+
+                        </a>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <h3 th:text="${car.brand} +' '+ ${car.model}"></h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <p>Fuel</p>
+
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <p th:text="${car.engine.type}"></p>
+                                    </div>
+
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <p>Price</p>
+
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <p th:text="${car.rentPrice}+' '+ zł"></p>
+
+                                    </div>
+
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <p>Year</p>
+
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <p th:text="${car.productionYear}"></p>
+                                    </div>
+
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <p>Doors</p>
+
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <p th:text="${car.doorsNumber}"></p>
+                                    </div>
+
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <p>Burning</p>
+
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <p th:text="${car.burningFuel}+' l/100km'"></p>
+                                    </div>
+
+                                </div>
+                            </li>
+                        </ul>
+
+
+                    </div>
+                    <div class="col-sm-4 justify-content-center align-items-center ">
+                        <div class="">
+                            <div class="btn-group-vertical  ">
+
+                                <a th:href="@{/booking/{id}(id=${car.id})}">
+                                    <button class="btn btn-light" type="button">BOOK THIS CAR</button>
+                                </a>
+                                <a th:href="@{/home/{id}(id=${car.id})}">
+                                    <button class="btn btn-light" type="button">DETAILS</button>
+                                </a>
+                                <a th:href="@{/admin/car/update/{id}(id=${car.id})}">
+                                    <button class=" btn-default" sec:authorize="hasRole('ROLE_ADMIN')" type="button">
+                                        EDIT
+                                    </button>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </li>
+        </ul>
+
+    </div>
+    <div th:if="${totalPages >1}">
+
+        <ul class="pagination justify-content-center" style="margin:20px 0">
+
+            <li class="page-item" th:if="${currentPage>1}"><a class="page-link" th:href="@{'/page/'+${currentPage-1}}">Previous</a>
+            </li>
+            <li class="page-item"
+                th:classappend="${currentPage==i}? active"
+                th:each="i: ${#numbers.sequence(1, totalPages)}">
+                <a class="page-link" th:href="@{'/page/'+${i}}">[[${i}]]</a>
+            </li>
+            <li class="page-item" th:if="${currentPage!=totalPages}">
+                <a class="page-link"
+                   th:href="@{'/page/'+${currentPage+1}}">Next</a>
+            </li>
+
+        </ul>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1,  shrink-to-fit=no" name="viewport">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <title>Title</title>
+</head>
+<body>
+<div class=" container">
+    <div th:insert="fragments/header:: header"></div>
+
+    <div class="">
+        <form action="/register" class="form-signin" method="post" th:object="${user}">
+            <h2 class="form-signin-heading">Please sign up</h2>
+            <p>
+                <label for="name">First name</label>
+                <input autofocus class="form-control" id="name" name="name" placeholder="First name"
+                       required th:field="*{name}" type="text">
+                <span class="help-block" th:errors="*{name}" th:if="${#fields.hasErrors('name')}"></span>
+
+            </p>
+            <p>
+                <label for="surname">Last name</label>
+                <input autofocus class="form-control" id="surname" name="surname" placeholder="Last name"
+                       required th:field="*{surname}" type="text">
+                <span class="help-block" th:errors="*{surname}" th:if="${#fields.hasErrors('surname')}"></span>
+            </p>
+            <p>
+                <label for="email">E-mail</label>
+                <input autofocus class="form-control" id="email" name="email" placeholder="E-mail"
+                       required th:field="*{email}" type="email">
+                <span class="help-block" th:errors="*{email}" th:if="${#fields.hasErrors('email')}"></span>
+            </p>
+            <p>
+                <label for="password">Password</label>
+                <input class="form-control" id="password" name="password" placeholder="Password" required
+                       type="password">
+                <span class="help-block" th:errors="*{password}" th:if="${#fields.hasErrors('password')}"></span>
+            </p>
+
+            <p>
+                <label for="phone">Phone number</label>
+                <input autofocus class="form-control" id="phone" name="phone" placeholder="Phone number"
+                       required th:field="*{phone}" type="tel">
+                <span class="help-block" th:errors="*{phone}" th:if="${#fields.hasErrors('phone')}"></span>
+            </p>
+            <p>
+                <label for="pesel">PESEL</label>
+                <input autofocus class="form-control" id="pesel" name="pesel" placeholder="PESEL"
+                       required th:field="*{pesel}" type="number">
+                <span class="help-block" th:errors="*{pesel}" th:if="${#fields.hasErrors('pesel')}"></span>
+            </p>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>

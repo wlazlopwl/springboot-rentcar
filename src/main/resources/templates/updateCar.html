@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link  th:href="@{/css/style.css}" rel="stylesheet" />
+    <title>Adding new vehicle</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div th:insert="fragments/adminNav:: adminNav" class="sidebar col-sm-3">
+
+        </div>
+        <div align="center" class="col-sm-9 admin-content">
+            <h1>Edit vehicle</h1>
+            <br><br>
+
+            <form action="#" th:action="@{/updateCar}" th:object="${car}" th:value="${id}" method="post">
+                <div class="form-group">
+                    <input type="hidden" th:field="*{id}" />
+                    <label for="inputBrand">Brand</label>
+                    <input type="text" th:field="*{brand}" class="form-control" id="inputBrand"
+                           aria-describedby="emailHelp" placeholder="Car brand">
+
+                </div>
+                <div class="form-group">
+                    <label for="inputModel">Model</label>
+                    <input type="text" th:field="*{model}" class="form-control" id="inputModel" placeholder="Car model">
+                </div>
+                <div class="form-group">
+                    <label for="inputPrice">Price per day</label>
+                    <input type="number" th:field="*{rentPrice}" class="form-control" id="inputPrice"
+                           placeholder="Price per day">
+                </div>
+                <div class="form-group">
+                    <label for="inputModel">Production year</label>
+                    <input type="number" min="2000" maxlength="4" th:field="*{productionYear}" class="form-control"
+                           id="inputYear" placeholder="Car production year">
+                </div>
+                <div class="form-group">
+                    <label for="inputModel">Doors number</label>
+                    <input type="number" th:field="*{doorsNumber}" class="form-control" id="inputDoorsNumber"
+                           placeholder="Car doors number">
+                </div>
+                <div class="form-group">
+                    <label for="inputModel">Burning fuel</label>
+                    <input type="number" step="0.1" th:field="*{burningFuel}" class="form-control" id="inputBurningFuel"
+                           placeholder="Burning fuel per 100km">
+                </div>
+                <div th:each="engines: ${engineList}"  class="form-check-inline">
+                    <label class="form-check-label">
+                        <input th:text=${engines.type} th:value="${engines.id}" th:if="${engines.id==engine.id}" checked th:name="idEngineChecked" type="radio"
+                               class="form-check-input">
+                        <input th:text=${engines.type} th:value="${engines.id}" th:unless="${engines.id==engine.id}" th:name="idEngineChecked" type="radio"
+                               class="form-check-input">
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+                <br><br>
+                <p>Actual car extras</p>
+                <table class="table table-hover table-bordered">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>type</th>
+                        <th>Settings</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="table-success" th:each="actualExtras: ${car.car_extras}">
+                        <td th:text=${actualExtras.id}></td>
+                        <td th:text=${actualExtras.name}></td>
+                        <td>
+                            <form action="#" th:action="@{/delete}" method="post">
+                                <input type="hidden" th:name="extrasId" th:value="${actualExtras.id}" />
+                                    <input type="hidden" th:name="carId" th:value="${car.id}" />
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+
+
+
+                        </td>
+                    </tr>
+                    <tr class="table-secondary" th:each="extras: ${notSelected}">
+                        <td th:text=${extras.id}></td>
+                        <td th:text=${extras.name}></td>
+                        <td>
+                            <form action="#" th:action="@{/addExtrasToCar}"  method="post">
+                                <input type="hidden" th:name="extrasId"  th:value="${extras.id}" />
+                                <input type="hidden" th:name="carId "  th:value="${car.id}" />
+                                <button type="submit" class="btn btn-success">Add</button>
+
+
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

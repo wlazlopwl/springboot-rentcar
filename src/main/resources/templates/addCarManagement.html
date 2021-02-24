@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <title>Adding new vehicle</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div th:insert="fragments/adminNav:: adminNav" class="sidebar col-sm-3">
+
+        </div>
+        <div align="center" class="col-sm-9 admin-content">
+            <h1>Add new vehicle</h1>
+            <br><br>
+
+                <form action="#" th:action="@{/save}" th:object="${car}" method="post">
+                    <div class="form-group">
+                        <label for="inputBrand">Brand</label>
+                        <input type="text" th:field="*{brand}" class="form-control" id="inputBrand" aria-describedby="emailHelp" placeholder="Car brand">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="inputModel">Model</label>
+                        <input type="text"  th:field="*{model}" class="form-control" id="inputModel" placeholder="Car model">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPrice">Price per day</label>
+                        <input type="number"  th:field="*{rentPrice}" class="form-control" id="inputPrice" placeholder="Price per day">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputModel">Production year</label>
+                        <input type="number" min="2000" maxlength="4" th:field="*{productionYear}" class="form-control" id="inputYear" placeholder="Car production year">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputModel">Doors number</label>
+                        <input type="number" th:field="*{doorsNumber}" class="form-control" id="inputDoorsNumber" placeholder="Car doors number">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputModel">Burning fuel</label>
+                        <input type="number" step="0.1" th:field="*{burningFuel}" class="form-control" id="inputBurningFuel" placeholder="Burning fuel per 100km">
+                    </div>
+                    <div th:each="engine: ${engineList}" class="form-check-inline">
+                        <label class="form-check-label">
+                            <input th:text=${engine.type} th:value="${engine.id}" th:name="idEngineChecked" type="radio" class="form-check-input">
+                        </label>
+                    </div>
+                    <br><br>
+                    <div th:each="extras: ${extrasList}" class="form-check-inline">
+                        <label class="form-check-label">
+                                <input th:text=${extras.name} th:value="${extras.id}" th:name="idChecked" type="checkbox" class="form-check-input">
+                        </label>
+                    </div>
+
+
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

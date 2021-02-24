@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <title>Title</title>
+</head>
+<body >
+<div class="content container">
+    <div th:insert="fragments/header:: header"></div>
+
+    <div class="jumbotron">
+        <h1>About Us</h1>
+        <p>Mauris a accumsan purus. Praesent suscipit accumsan felis</p>
+    </div>
+
+    <section id="about-us" >
+        <div class="container">
+            <div class="row my-5 mx-3">
+                <div class="col">
+                    <h1>Our mission</h1>
+                    <p>Curabitur eget eros a augue luctus rutrum nec vitae nisl. Vestibulum maximus, arcu ut commodo
+                        ultrices, massa turpis malesuada diam, pellentesque fringilla magna metus non nulla. Donec ut
+                        accumsan odio, in facilisis justo. Pellentesque commodo nec orci ut mollis. Maecenas ex mi,
+                        cursus sed lobortis ac, gravida in eros. Curabitur feugiat sit amet arcu at tristique.</p>
+                    <p>Praesent consectetur, quam a sodales convallis, erat ex commodo elit, in iaculis nisi nisl at
+                        velit. Nunc suscipit quis lectus id dictum. Quisque aliquam nec elit in ullamcorper. Quisque
+                        porttitor egestas nisl eu pulvinar. Proin tincidunt lorem ac ante rhoncus, at consectetur diam
+                        vulputate. Curabitur et placerat sapien, nec tincidunt nulla. Vestibulum tincidunt libero ipsum,
+                        accumsan malesuada lorem tincidunt vel. Fusce malesuada tincidunt ipsum nec efficitur. Nulla
+                        feugiat quis metus iaculis sodales. Donec auctor orci at justo condimentum sollicitudin. Morbi
+                        aliquet metus a purus pharetra accumsan. Phasellus mollis ut eros pellentesque tempus.</p>
+                <br><br>
+
+                    <h1>Our team</h1>
+                    <div class="row justify-content-center">
+                        <div class="card" style="width:400px">
+                            <img class="card-img-top" src="images/girl1.png" alt="Card image">
+                            <div class="card-body">
+                                <h4 class="card-title">John Doe</h4>
+                                <p class="card-text">Lorem ipsum bum</p>
+
+                            </div>
+                        </div>
+                        <div class="card" style="width:400px">
+                            <img class="card-img-top" src="images/girl.png" alt="Card image">
+                            <div class="card-body">
+                                <h4 class="card-title">Doe John</h4>
+                                <p class="card-text">Mauris a accumsan purus</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+
+</body>
+</html>

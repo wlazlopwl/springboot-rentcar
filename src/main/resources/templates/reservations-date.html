@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <title>Title</title>
+
+
+</head>
+<body>
+<div class="container">
+    <div th:insert="fragments/header:: header"></div>
+
+    <div class="row">
+        <div class="col-sm-9 col-md-3">
+            <div>
+                <img class="img-fluid" style="max-width: 200px" th:src="@{/images/{image}(image=${car.imgurl})}"/>
+            </div>
+            <div class="main_detail_h2_list">
+                <h3 class="main_detail_simple_h2" th:text="${car.brand} +' ' + ${car.model}+' | '"></h3>
+                <h3 class="main_detail_simple_h2" th:text="${car.engine.type}"></h3>
+
+            </div>
+
+
+        </div>
+        <div class="col-sm-9 col-md-9">
+
+            <div id="accordion">
+
+                <form id="extrasForm" method="post" th:action="@{/booking/} + ${car.id}+ @{/confirm}">
+                    <div class="md-form">
+                        <label for="pickup-date">Pick-up date</label>
+                        <input class="form-control datepicker" id="pickup-date" name="pickupDate"
+                               onfocus="(this.type='date')"
+                               placeholder="Select pick-up date" required type="text">
+                    </div>
+                    <div class="md-form">
+                        <label for="pickup-date">Pick-up hour</label>
+                        <input class="form-control hourpicker" id="pickup-hour" name="pickupHour"
+                               onfocus="(this.type='date')"
+                               placeholder="Select pick-up hour" required type="text">
+                    </div>
+                    <div class="md-form">
+                        <label for="return-date">Return date</label>
+                        <input class="form-control datepicker" id="return-date" name="returnDate"
+                               onfocus="(this.type='date')"
+                               placeholder="Select return hour" required type="text">
+                    </div>
+                    <div class="md-form">
+                        <label for="return-hour">Pick-up date</label>
+                        <input class="form-control hourpicker" id="return-hour" name="returnHour"
+                               onfocus="(this.type='date')"
+                               placeholder="Select return hour" required type="text">
+                    </div>
+                    <div class="card" th:each="extras, iter : ${car.car_extras}">
+                        <div class="card-header">
+                            <div class="row">
+
+                                <div class="col-sm-10">
+                                    <a class="collapsed card-link" data-toggle="collapse"
+                                       th:href="${'#coll'+iter.index}"
+                                       th:text="${extras.name}">
+
+                                    </a>
+                                </div>
+                                <div class="col-sm-2">
+                                    <span th:text="${extras.price}"></span>
+                                </div>
+
+                            </div>
+                            <div class="collapse" data-parent="#accordion" th:id="${'coll'+iter.index}">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-10">
+                                            <span th:text="${extras.description}"></span>
+                                        </div>
+                                        <div class="col-sm-2">
+
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" th:name="idChecked"
+                                                       th:value="${extras.id}"
+                                                       type="checkbox">
+                                            </label>
+
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <button class="btn btn-primary" id="submit" type="submit">Submit</button>
+                </form>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+    <script>
+        $('.datepicker').datepicker({
+            startDate: new Date()
+        });
+
+    </script>
+    <script>
+        $('.hourpicker').datetimepicker();
+    </script>
+
+
+</div>
+</body>
+
+
+</html>

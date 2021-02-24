@@ -1,0 +1,75 @@
+.homeCarlist, .adminCarList{
+    list-style: none;
+}
+.content{
+
+    width: 100%;
+    margin: auto;
+}
+.header-address p{
+
+    /*float:right;*/
+}
+
+.carDetailIcon{
+    width: 30px;
+    height: 30px;
+}
+body{
+    /*height: 1500px;*/
+}
+.main_detail_simple_h2{
+    display:inline;
+    clear:none;
+
+}
+.main_detail_h2_list{
+    padding-bottom: 20px;
+
+}
+
+.sidebar{
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+
+
+
+
+}
+.help-block{
+    color: red;
+    font-size: 85%;
+}
+
+.addCarButton{
+margin-bottom: 100px;
+}
+
+.admin-content{
+    margin-left: 200px;
+}
+
+.confirm-card{
+    margin: 0 auto;
+    padding-top: 100px;
+    width: 20rem;
+
+}
+.bar{
+    background: black;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+.bar a{
+    color: white;
+
+}
+

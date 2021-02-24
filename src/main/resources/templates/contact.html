@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <title>Title</title>
+</head>
+<body>
+<div class="content container">
+    <div th:insert="fragments/header:: header"></div>
+
+    <div class="jumbotron">
+        <h1>Contact</h1>
+        <p>Mauris a accumsan purus. Praesent suscipit accumsan felis</p>
+    </div>
+
+
+    <section id="contact">
+        <div class="">
+            <div class="row my-5 mx-3">
+                <iframe allowfullscreen=""
+                        aria-hidden="false" frameborder="0" height="300" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12404.579356917506!2d21.001868898080637!3d52.2311715923934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc8c92692e49%3A0xc2e97ae5311f2dc2!2sPa%C5%82ac%20Kultury%20i%20Nauki!5e0!3m2!1spl!2spl!4v1602612044798!5m2!1spl!2spl" style="border:0;"
+                        tabindex="0" width="1200"></iframe>
+                <br>
+                <div class="col-sm-9 col-md-3">
+                    <br>
+                    <br>
+                    <div class="card">
+                        <div class="card-header">Contact:</div>
+                        <div class="card-body ">
+                            <p>plac Defilad 1</p>
+                            <p>00-901 Warszawa</p>
+                            <p>+48 123-123-123</p>
+                            <p>rent@car.com</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-9 col-md-9">
+                    <br>
+                    <br>
+                    <div class="card">
+                        <div class="card-header">Write email to us</div>
+                        <div class="card-body col">
+                            <form action="/action_page.php">
+                                <div class="form-group">
+                                    <label for="email">Your email address:</label>
+                                    <input class="form-control" id="email" placeholder="Enter email" type="email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Your name:</label>
+                                    <input class="form-control" id="name" placeholder="Enter your name" type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label for="question">Your question:</label>
+                                    <textarea class="form-control" id="question" placeholder="Enter your question"
+                                              rows="3"></textarea>
+
+                                </div>
+
+                                <button class="btn btn-primary" type="submit">Submit</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</div>
+
+
+</body>
+</html>
